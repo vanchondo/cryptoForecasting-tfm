@@ -1,0 +1,9 @@
+statsmodels==0.13
+Tensorflow==2.9.1
+Keras==2.9.0
+pandas==1.4.0
+numpy==1.22
+pandas==1.4
+matplot==0.1.9
+sklearn
+Flask==2.2.2
