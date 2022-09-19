@@ -10,3 +10,5 @@ lightgbm
 tensorflow
 keras
 sklearn
+python-dateutil
+apscheduler
