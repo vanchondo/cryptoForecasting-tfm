@@ -117,14 +117,14 @@ def predictSOL():
     return jsonify(response)
 
 def trainAll():
-    # btcForecaster.train(True) 
-    # btcForecaster.train(False)
-    # ethForecaster.train(True)
-    # ethForecaster.train(False)
-    # adaForecaster.train(True)
-    # adaForecaster.train(False)
-    # xrpForecaster.train(True)
-    # xrpForecaster.train(False)
+    btcForecaster.train(True) 
+    btcForecaster.train(False)
+    ethForecaster.train(True)
+    ethForecaster.train(False)
+    adaForecaster.train(True)
+    adaForecaster.train(False)
+    xrpForecaster.train(True)
+    xrpForecaster.train(False)
     solForecaster.train(True)
     solForecaster.train(False)
 
