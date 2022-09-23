@@ -1,17 +1,15 @@
-
-import time
 import atexit
 from apscheduler.schedulers.background import BackgroundScheduler
-from BacktestingForecaster import BacktestingForecaster
+from forecasters.BTCBacktestingForecaster import BTCBacktestingForecaster
 from flask import Flask, jsonify, g
 
 app = Flask(__name__)
-forecaster = BacktestingForecaster()
+btcForecaster = BTCBacktestingForecaster()
 
-@app.route('/btc/predict/days', methods=['GET'])
-def predict():
-    high_pred = forecaster.predict_btc_1d(8, True).to_frame()
-    low_pred = forecaster.predict_btc_1d(8, False)
+@app.route('/predict/btc', methods=['GET'])
+def predictBTC():
+    high_pred = btcForecaster.predict(8, True).to_frame()
+    low_pred = btcForecaster.predict(8, False)
     high_pred['low'] = low_pred
     response = []
     for row in high_pred.iterrows():
@@ -28,14 +26,13 @@ def predict():
         
     return jsonify(response)
 
-
 def trainAll():
-    forecaster.train_btc_1d(True) 
-    forecaster.train_btc_1d(False) 
+    btcForecaster.train(True) 
+    btcForecaster.train(False) 
 
 trainAll()
 scheduler = BackgroundScheduler()
-scheduler.add_job(func=trainAll, trigger="cron", hour=23)
+scheduler.add_job(func=trainAll, trigger="interval", hours=4)
 scheduler.start()
 
 # Shut down the scheduler when exiting the app
