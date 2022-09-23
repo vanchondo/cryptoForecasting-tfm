@@ -1,3 +1,4 @@
+from asyncio import constants
 import io
 import urllib.request
 from datetime import date, datetime, timedelta
@@ -7,8 +8,13 @@ import pandas as pd
 from lightgbm import LGBMRegressor
 from skforecast.ForecasterAutoreg import ForecasterAutoreg
 from skforecast.model_selection import backtesting_forecaster
+import os
+from os import path
 
 class BacktestingForecaster:
+    
+    MODELS_FOLDER = 'models/'
+    
     def train(url, column_to_use, steps, lag):
         data = BacktestingForecaster.download_file(url)
         data = BacktestingForecaster.clean_data(data, column_to_use)
@@ -69,7 +75,10 @@ class BacktestingForecaster:
         return data
     
     def save_model(model, filename):
-        pickle.dump(model, open(filename, 'wb'))
+        if not (path.exists(BacktestingForecaster.MODELS_FOLDER)):
+            os.mkdir(BacktestingForecaster.MODELS_FOLDER)
+            
+        pickle.dump(model, open(BacktestingForecaster.MODELS_FOLDER + filename, 'wb'))
         
     def load_model(filename):
-        return pickle.load(open(filename, 'rb'))
+        return pickle.load(open(BacktestingForecaster.MODELS_FOLDER + filename, 'rb'))
