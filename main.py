@@ -27,9 +27,9 @@ def predictBTC():
         high = row[1][0]
         low = row[1][1]
         response.append({
-            'Date' : date,
-            'High' : high,
-            'Low' : low
+            'date' : date,
+            'high' : str(high),
+            'low' : str(low)
         })
         
     response.pop(0)
@@ -47,9 +47,9 @@ def predictETH():
         high = row[1][0]
         low = row[1][1]
         response.append({
-            'Date' : date,
-            'High' : high,
-            'Low' : low
+            'date' : date,
+            'high' : str(high),
+            'low' : str(low)
         })
         
     response.pop(0)
@@ -67,9 +67,9 @@ def predictADA():
         high = row[1][0]
         low = row[1][1]
         response.append({
-            'Date' : date,
-            'High' : high,
-            'Low' : low
+            'date' : date,
+            'high' : str(high),
+            'low' : str(low)
         })
         
     response.pop(0)
@@ -87,9 +87,9 @@ def predictXRP():
         high = row[1][0]
         low = row[1][1]
         response.append({
-            'Date' : date,
-            'High' : high,
-            'Low' : low
+            'date' : date,
+            'high' : str(high),
+            'low' : str(low)
         })
         
     response.pop(0)
@@ -107,9 +107,9 @@ def predictSOL():
         high = row[1][0]
         low = row[1][1]
         response.append({
-            'Date' : date,
-            'High' : high,
-            'Low' : low
+            'date' : date,
+            'high' : str(high),
+            'low' : str(low)
         })
         
     response.pop(0)
