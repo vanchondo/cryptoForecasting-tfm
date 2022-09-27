@@ -2,7 +2,7 @@ from forecasters.BacktestingForecaster import BacktestingForecaster
 from forecasters.BacktestingForecaster import BacktestingForecaster
 
 class SOLBacktestingForecaster:    
-    LAG = 300 # TODO Find the best number
+    LAG = 390
     
     HIGH_FILENAME = 'sol_high.sav'
     LOW_FILENAME = 'sol_low.sav'

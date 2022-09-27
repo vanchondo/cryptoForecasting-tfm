@@ -2,7 +2,7 @@ from forecasters.BacktestingForecaster import BacktestingForecaster
 from forecasters.BacktestingForecaster import BacktestingForecaster
 
 class XRPBacktestingForecaster:    
-    LAG = 640 # TODO Find the best number
+    LAG = 720
     
     HIGH_FILENAME = 'xrp_high.sav'
     LOW_FILENAME = 'xrp_low.sav'

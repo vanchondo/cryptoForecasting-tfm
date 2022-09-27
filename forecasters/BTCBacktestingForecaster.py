@@ -4,7 +4,7 @@ from forecasters.BacktestingForecaster import BacktestingForecaster
 from forecasters.BacktestingForecaster import BacktestingForecaster
 
 class BTCBacktestingForecaster:    
-    LAG = 920
+    LAG = 1000
     
     HIGH_FILENAME = 'btc_high.sav'
     LOW_FILENAME = 'btc_low.sav'

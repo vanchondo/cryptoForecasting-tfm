@@ -2,7 +2,7 @@ from forecasters.BacktestingForecaster import BacktestingForecaster
 from forecasters.BacktestingForecaster import BacktestingForecaster
 
 class ADABacktestingForecaster:    
-    LAG = 640 # TODO Find the best number
+    LAG = 800
     
     HIGH_FILENAME = 'ada_high.sav'
     LOW_FILENAME = 'ada_low.sav'

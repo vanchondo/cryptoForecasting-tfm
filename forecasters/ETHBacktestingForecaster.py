@@ -2,7 +2,7 @@ from forecasters.BacktestingForecaster import BacktestingForecaster
 from forecasters.BacktestingForecaster import BacktestingForecaster
 
 class ETHBacktestingForecaster:    
-    LAG = 640 # TODO Find the best number
+    LAG = 790
     
     HIGH_FILENAME = 'eth_high.sav'
     LOW_FILENAME = 'eth_low.sav'
