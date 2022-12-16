@@ -9,6 +9,6 @@ plotly
 lightgbm
 tensorflow
 keras
-sklearn
+scikit-learn
 python-dateutil
 apscheduler
