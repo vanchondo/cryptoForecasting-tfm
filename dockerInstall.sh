@@ -8,12 +8,12 @@ echo '#### Uploading image to jfrog...'
 docker tag $IMAGE vanchondo.jfrog.io/tfm/$IMAGE
 docker push vanchondo.jfrog.io/tfm/$IMAGE
 
-if [ ! "$(docker ps -q -f name=$IMAGE)" ]; then
+if [ "$(docker ps -q -f name=$IMAGE)" ]; then
   echo '#### Stopping previous container - '$IMAGE'...'
   docker stop $IMAGE
 fi
 if [ "$(docker ps -aq -f status=exited -f name=$IMAGE)" ]; then
-  echo '#### Stopping previous container - '$IMAGE'...'
+  echo '#### Removing previous container - '$IMAGE'...'
   docker rm $IMAGE
 fi
 
