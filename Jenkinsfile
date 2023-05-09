@@ -12,13 +12,13 @@ pipeline {
             steps {
                 sh 'docker image build -t $app_name:latest .'
             }
-        },
+        }
         stage('Docker Tag') {
             agent any
             steps {
                 sh 'docker image tag $app_name $registry/$app_name'
             }
-        },
+        }
         stage('Docker Login') {
             agent any
             steps {
