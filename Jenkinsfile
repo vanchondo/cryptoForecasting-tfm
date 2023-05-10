@@ -12,7 +12,7 @@ pipeline {
         stage('Docker Login') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-registry-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
-                    sh 'docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} $registry'
+                    sh 'docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} ${registry}'
                 }
             }
         }
