@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Docker Login') {
             steps {
-                sh 'echo $CREDENTIALS_CREDENTIALS_PSW | docker login -u $CREDENTIALS_CREDENTIALS_USR --password-stdin'
+                sh 'docker login -u $CREDENTIALS_CREDENTIALS_USR -p $CREDENTIALS_CREDENTIALS_PSW $registry'
             }
         }
         stage('Docker Push') {
