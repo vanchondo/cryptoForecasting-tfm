@@ -7,6 +7,13 @@ pipeline {
         registry = 'registry.victoranchondo.com'
     }
     stages {
+        stage('Docker Login') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-registry-credentials', usernameVariable: '$CREDENTIALS_CREDENTIALS_USR', passwordVariable: '$CREDENTIALS_CREDENTIALS_PSW')]) {
+                    sh 'docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} $registry'
+                }
+            }
+        }
         stage('Docker Build') {
             steps {
                 sh 'docker image build -t $app_name:latest .'
@@ -15,11 +22,6 @@ pipeline {
         stage('Docker Tag') {
             steps {
                 sh 'docker image tag $app_name $registry/$app_name'
-            }
-        }
-        stage('Docker Login') {
-            steps {
-                sh 'docker login -u $CREDENTIALS_CREDENTIALS_USR -p $CREDENTIALS_CREDENTIALS_PSW $registry'
             }
         }
         stage('Docker Push') {
