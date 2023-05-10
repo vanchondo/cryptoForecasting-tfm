@@ -1,8 +1,6 @@
 #!groovy
 pipeline {
-    agent {
-        docker { image 'python:bullseye' }
-    }
+    agent any
     environment {
         CREDENTIALS = credentials('docker-registry-credentials')
         app_name = 'cryptoforecasting-tfm'
