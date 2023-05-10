@@ -3,13 +3,15 @@ pipeline {
     agent any
     environment {
         CREDENTIALS = credentials('docker-registry-credentials')
+        DOCKER_USERNAME = credentials('docker-registry-credentials-username')
+        DOCKER_PASSWORD = credentials('docker-registry-credentials-password')
         app_name = 'cryptoforecasting-tfm'
         registry = 'registry.victoranchondo.com'
     }
     stages {
         stage('Docker Login') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'docker-registry-credentials', usernameVariable: '$CREDENTIALS_CREDENTIALS_USR', passwordVariable: '$CREDENTIALS_CREDENTIALS_PSW')]) {
+                withCredentials([usernamePassword(credentialsId: 'docker-registry-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
                     sh 'docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} $registry'
                 }
             }
