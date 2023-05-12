@@ -20,11 +20,18 @@ pipeline {
                     sh 'docker push ${REGISTRY_SERVER}/${app_name}'
                 }
             }
-        } 
+        }
+        stage('Docker Run') {
+            steps {
+                sh 'docker stop ${app_name} || true && docker rm ${app_name} || true'
+                sh 'docker run --name ${app_name} -d --restart unless-stopped -p6060:6060 ${app_name}:${version}'
+            }
+        }        
     }
     post {
         always {
             sh 'docker logout'
+            sh 'docker image rm -f ${app_name}:${version}'
         }
     }
 }
