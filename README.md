@@ -30,3 +30,19 @@ numpy 1.19.5 < -- ?
 pandas
 matplot
 sklearn
+
+## Alt
+gunicorn
+flask
+skforecast
+numpy
+pandas
+matplot
+seaborn
+plotly
+lightgbm
+tensorflow
+keras
+scikit-learn
+python-dateutil
+apscheduler

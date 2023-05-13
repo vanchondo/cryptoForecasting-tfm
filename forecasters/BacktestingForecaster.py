@@ -29,12 +29,16 @@ class BacktestingForecaster:
                         regressor = LGBMRegressor(random_state=123),
                         lags      = lag
                         )
-        
+        yAxis = data.loc[start_train:, column]
+        trainSize = len(data.loc[start_train:end_train, column])
+        if trainSize >= len(yAxis):
+            trainSize = yAxis
+            
         # Backtest test data, 1 step
         metric, predictions = backtesting_forecaster(
                                     forecaster = forecaster,
-                                    y          = data.loc[start_train:, column],
-                                    initial_train_size = len(data.loc[start_train:end_train, column]),
+                                    y          = yAxis,
+                                    initial_train_size = trainSize,
                                     fixed_train_size   = True,
                                     steps      = steps,
                                     refit      = True,
@@ -51,7 +55,7 @@ class BacktestingForecaster:
         data = data.set_index('Date')
         data = data.asfreq('D')
         data = data.sort_index()
-        
+        data = data.dropna()
         return data
 
     def get_yesterday_epoch():
